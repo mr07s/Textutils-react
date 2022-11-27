@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/Navbar';
 import TextFrom from './components/TextFrom';
@@ -49,14 +49,14 @@ else{
 
 setmode('light');
 document.body.style.backgroundColor='white';
-showalert("light mode has ben enabled","success");
+showalert("light mode has ben enabled",'success');
 
 settext("Enable dark mode")
 setstyle({
   color:'black',
 })
 
-document.title='TextUtils-darkmode';
+document.title='TextUtils-lightmode';
 
 }
 
@@ -66,8 +66,8 @@ document.title='TextUtils-darkmode';
   return (
 
 
-    <>
-    {/* <BrowserRouter> */}
+    
+    <BrowserRouter>
   
     
    <Navbar title="TextUtils" aboutText="About TextUtils" mode={mode}  togglemode={toggelmode} text={text}  mystyle={mystyle}/>
@@ -77,21 +77,21 @@ document.title='TextUtils-darkmode';
      <div className="container">
 
 
-{/* <Routes> */}
-{/* <Route  exact path='/' element={<TextFrom  heading="Enter the text to analyze" my-3  mode={mode}  />}/> */}
+<Routes>
+<Route  exact path='/' element={<TextFrom showalert={showalert} heading="Try TextUtils- Word Counter,Charecter Counter,Remove Extra Spaces " my-3  mode={mode}  />}/>
 
 {/* my-3 means margin y three */}
-{/* <Route exact path='/about' element={<About/> }/> */}
+<Route exact path='/about' element={<About mode={mode}/> }/>
 
-<TextFrom  heading="Enter the text to analyze" my-3  mode={mode}  />
 
-{/* </Routes> */}
+</Routes>
+{/* <TextFrom  heading="Enter the text to analyze" my-3  mode={mode}  /> */}
 
    
 
      </div>
-    {/* </BrowserRouter> */}
-    </>
+    </BrowserRouter>
+    
   );
 }
 

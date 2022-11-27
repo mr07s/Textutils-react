@@ -1,55 +1,25 @@
 import React,{useState} from 'react'
 
-export default function About() {
-    const[mystyle,steMyStyle]=useState({
-     color:'blak',
-     backgroundColor:'white',
+export default function About(props) {
+    // const[mystyle,steMyStyle]=useState({
+    //  color:'blak',
+    //  backgroundColor:'white',
    
-    })
-const[text,setText]=useState("Enable Dark Mode");
+    // })
+
+    let mystyle={
+      color:props.mode==='dark'?'white':'#042743',
+      backgroundColor:props.mode==='dark'?'rgba(36,74,104)':'white',
+    }
     
 
      
 
-   let toggelStyle=()=>{
-    if(mystyle.color=='white'){
-        steMyStyle(
-{
-
-color:'black',
-backgroundColor:'white'
-},
-setText("Enable dark Mode")
-// 
-
-
-        )
-
-    }
-    else{
-        steMyStyle(
-            {
-            
-            color:'white',
-            backgroundColor:'black',
-            border:'2px solid white'
-            },
-setText("Enable light Mode")
-            
-            
-            
-                    )
-    
-    
-    }
-
-
-   }
-
+ 
 
   return (
-    <div className="container" style={mystyle}>
-    <h2 className="my-2" >About us</h2>
+    <div className="container" >
+    <h2 className="my-2" style={{color:props.mode==='dark'?'white':'#042743'}}>About us</h2>
 <div className="accordion" id="accordionExample" style={mystyle}>
   <div className="accordion-item">
     <h2 className="accordion-header" id="headingOne">
@@ -90,7 +60,7 @@ setText("Enable light Mode")
 </div>
 <div className="container my-3">
 
-<button type='button' onClick={toggelStyle}  className='btn btn-primary'>{text}</button>
+{/* <button type='button' onClick={toggelStyle}  className='btn btn-primary'>{text}</button> */}
 
 </div>
     </div>
