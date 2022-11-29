@@ -6,6 +6,7 @@ import Alert from './components/Alert';
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import About from './components/About';
 import React ,{useState} from 'react';
+import Login from './components/Login';
 // import Color from './Color';
 function App() {
   const [mode, setmode] = useState('light');
@@ -20,7 +21,17 @@ type:type
 
   }
 
+const removeBodyClasses=()=>{
+document.body.classList.remove('bg-light')
+document.body.classList.remove('bg-dark')
+document.body.classList.remove('bg-warning')
+document.body.classList.remove('bg-danger')
+document.body.classList.remove('bg-success')
 
+
+
+
+}
 
   
 
@@ -30,8 +41,9 @@ type:type
   const[mystyle,setstyle]=useState({
 color:'black',
   })
-  const toggelmode=()=>{
-    
+  const toggelmode=(cls)=>{
+    removeBodyClasses()
+    // document.body.classList.add('bg-'+cls);
 if(mode==='light'){
 
 setmode('dark');
@@ -71,13 +83,13 @@ document.title='TextUtils-lightmode';
   
     
    <Navbar title="TextUtils" aboutText="About TextUtils" mode={mode}  togglemode={toggelmode} text={text}  mystyle={mystyle}/>
- 
 
      <Alert    alert={alert}/>
      <div className="container">
 
 
 <Routes>
+   <Route exact path='/login'element={<Login mode={mode}  togglemode={toggelmode}/>}/> 
 <Route  exact path='/' element={<TextFrom showalert={showalert} heading="Try TextUtils- Word Counter,Charecter Counter,Remove Extra Spaces " my-3  mode={mode}  />}/>
 
 {/* my-3 means margin y three */}
